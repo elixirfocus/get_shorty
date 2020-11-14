@@ -1,0 +1,5 @@
+<h1>New Link record</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.link_record_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.link_record_path(@conn, :index) %></span>

@@ -2,4 +2,4 @@
 
 Build a new mod
 
-    $ mix phx.gen.schema LinkRecord link_records target_url:string  short_code:string
+    $ mix phx.gen.html LinkRecords LinkRecord link_records name:string username:string:unique
