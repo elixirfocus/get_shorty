@@ -1,5 +1,9 @@
 # GetShorty
 
+## Helpful commands
+
+* `mix test.watch --stale` to keep a console constantly running the tests against module changes.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

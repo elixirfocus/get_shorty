@@ -38,17 +38,9 @@ defmodule GetShorty.ShortLinks do
   def get_short_link!(id), do: Repo.get!(ShortLink, id)
 
   @doc """
-  Creates a short_link.
-
-  ## Examples
-
-      iex> create_short_link(%{field: value})
-      {:ok, %ShortLink{}}
-
-      iex> create_short_link(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
+  Attempts to create a `ShortLink` given a map of attributes.
   """
+  @spec create_short_link(map()) :: {:ok, ShortLink.t()} | {:error, Ecto.Changeset.t()}
   def create_short_link(attrs \\ %{}) do
     %ShortLink{}
     |> ShortLink.changeset(attrs)

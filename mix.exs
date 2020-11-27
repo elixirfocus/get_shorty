@@ -44,7 +44,21 @@ defmodule GetShorty.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+
+      # Useful tool for TDD
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+
+      # Helps build fixtures for testing and seeds.
+      # Specific ref is to avoid Elixir 1.11 warnings.
+      {:ex_machina,
+       git: "https://github.com/thoughtbot/ex_machina.git",
+       ref: "e3cfc70",
+       only: [:dev, :test],
+       runtime: false},
+
+      # For type checking
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 
