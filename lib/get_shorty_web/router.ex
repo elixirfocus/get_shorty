@@ -17,7 +17,7 @@ defmodule GetShortyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/link_records", LinkRecordController
+    resources "/short_links", ShortLinkController
   end
 
   # Other scopes may use custom stacks.

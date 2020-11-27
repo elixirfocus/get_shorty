@@ -1,0 +1,28 @@
+<h1>Listing Short links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Long link</th>
+      <th>Token</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for short_link <- @short_links do %>
+    <tr>
+      <td><%= short_link.long_link %></td>
+      <td><%= short_link.token %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.short_link_path(@conn, :show, short_link) %></span>
+        <span><%= link "Edit", to: Routes.short_link_path(@conn, :edit, short_link) %></span>
+        <span><%= link "Delete", to: Routes.short_link_path(@conn, :delete, short_link), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Short link", to: Routes.short_link_path(@conn, :new) %></span>

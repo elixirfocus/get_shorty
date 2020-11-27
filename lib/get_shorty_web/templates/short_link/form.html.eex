@@ -5,9 +5,9 @@
     </div>
   <% end %>
 
-  <%= label f, :target_url %>
-  <%= text_input f, :target_url %>
-  <%= error_tag f, :target_url %>
+  <%= label f, :long_link %>
+  <%= text_input f, :long_link %>
+  <%= error_tag f, :long_link %>
 
   <%= label f, :token %>
   <%= text_input f, :token %>

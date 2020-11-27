@@ -1,0 +1,18 @@
+<h1>Show Short link</h1>
+
+<ul>
+
+  <li>
+    <strong>Long link:</strong>
+    <%= @short_link.long_link %>
+  </li>
+
+  <li>
+    <strong>Token:</strong>
+    <%= @short_link.token %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.short_link_path(@conn, :edit, @short_link) %></span>
+<span><%= link "Back", to: Routes.short_link_path(@conn, :index) %></span>
