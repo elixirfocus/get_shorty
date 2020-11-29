@@ -11,7 +11,7 @@
   <body>
     <header>
       <section class="container">
-        <h1><a href="/">Get Shorty</a></h1>
+        <h1><a href="/">GetShorty</a></h1>
       </section>
     </header>
     <main role="main" class="container">
