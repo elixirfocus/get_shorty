@@ -1,18 +1,9 @@
-<h1>Show Short link</h1>
+<h1>Short Link Details</h1>
 
-<ul>
+<p>Here is your short link:</p>
 
-  <li>
-    <strong>Long link:</strong>
-    <%= @short_link.long_link %>
-  </li>
+<p class="test_short_link_url"><%= link @short_link_url, to: @short_link_url %></p>
 
-  <li>
-    <strong>Token:</strong>
-    <%= @short_link.token %>
-  </li>
+<p class="test_long_link">It will redirect to: <%= link @short_link.long_link, to: @short_link.long_link %></p>
 
-</ul>
-
-<span><%= link "Edit", to: Routes.short_link_path(@conn, :edit, @short_link) %></span>
-<span><%= link "Back", to: Routes.short_link_path(@conn, :index) %></span>
+<span><%= link "New Short Link", to: Routes.short_link_path(@conn, :new) %></span>

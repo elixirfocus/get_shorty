@@ -23,6 +23,7 @@ defmodule GetShortyWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import GetShortyWeb.ConnCase
+      import GetShorty.Factory
 
       alias GetShortyWeb.Router.Helpers, as: Routes
 

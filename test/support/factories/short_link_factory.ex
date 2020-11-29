@@ -3,7 +3,7 @@ defmodule GetShorty.ShortLinkFactory do
     quote do
       def short_link_factory do
         %GetShorty.ShortLinks.ShortLink{
-          long_link: "https://phoenixframework.org/",
+          long_link: "https://phoenixframework.org",
           token: sequence(:email, &"token#{&1}")
         }
       end

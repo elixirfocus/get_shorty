@@ -58,7 +58,10 @@ defmodule GetShorty.MixProject do
        runtime: false},
 
       # For type checking
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+
+      # For website parsing in tests
+      {:floki, "~> 0.29.0", only: [:test]}
     ]
   end
 

@@ -26,11 +26,40 @@ defmodule GetShorty.ShortLinks do
     Repo.get!(ShortLink, id)
   end
 
+  @spec get_short_link_by_token(String.t()) :: {:ok, ShortLink.t()} | {:error, :not_found}
+  @doc """
+  Attempts to find and return a single `ShortLink` based on a passed in token value.
+  """
+  def get_short_link_by_token(token) do
+    case Repo.get_by(ShortLink, token: token) do
+      nil -> {:error, :not_found}
+      short_link -> {:ok, short_link}
+    end
+  end
+
+  @doc """
+  Returns a random token that is available for a new `ShortLink`.
+  """
+  @spec get_available_random_token() :: String.t()
+  def get_available_random_token() do
+    token = build_random_token()
+
+    case get_short_link_by_token(token) do
+      {:ok, _} -> get_available_random_token()
+      {:error, :not_found} -> token
+    end
+  end
+
+  @spec build_random_token(integer() | nil) :: String.t()
+  defp build_random_token(length \\ 6) do
+    :crypto.strong_rand_bytes(length) |> Base.url_encode64() |> binary_part(0, length)
+  end
+
   @doc """
   Attempts to create a `ShortLink` given a map of attributes.
   """
-  @spec create_short_link(map() | nil) :: {:ok, ShortLink.t()} | {:error, Ecto.Changeset.t()}
-  def create_short_link(attrs \\ %{}) do
+  @spec create_short_link(map()) :: {:ok, ShortLink.t()} | {:error, Ecto.Changeset.t()}
+  def create_short_link(attrs) do
     %ShortLink{}
     |> change_short_link(attrs)
     |> Repo.insert()
@@ -72,6 +101,20 @@ defmodule GetShorty.ShortLinks do
     short_link
     |> cast(attrs, [:long_link, :token])
     |> validate_required([:long_link, :token])
+    |> validate_long_link_is_valid_uri()
     |> unique_constraint(:token)
+  end
+
+  @spec validate_long_link_is_valid_uri(Ecto.Changeset.t()) :: Ecto.Changeset.t()
+  defp validate_long_link_is_valid_uri(changeset) do
+    validate_change(changeset, :long_link, fn _, value ->
+      uri = URI.parse(value)
+
+      if uri.scheme == nil do
+        [long_link: "is not a valid url"]
+      else
+        []
+      end
+    end)
   end
 end

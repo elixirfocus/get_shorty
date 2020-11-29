@@ -29,6 +29,25 @@ defmodule GetShorty.ShortLinksTest do
     end
   end
 
+  describe "get_short_link_by_token/1" do
+    test "returns {:ok, short_link} tuple when given a valid token" do
+      %ShortLink{token: token} = insert(:short_link)
+      assert {:ok, %ShortLink{token: ^token}} = ShortLinks.get_short_link_by_token(token)
+    end
+
+    test "returns {:error, :not_found} when given a invalid token" do
+      assert {:error, :not_found} = ShortLinks.get_short_link_by_token("invalid")
+    end
+  end
+
+  describe "get_available_random_token/0" do
+    test "returns a token than can be used in a new short link" do
+      token = ShortLinks.get_available_random_token()
+      params = %{params_for(:short_link) | token: token}
+      assert {:ok, %ShortLink{token: ^token}} = ShortLinks.create_short_link(params)
+    end
+  end
+
   describe "create_short_link/1" do
     test "works with valid attributes" do
       assert {:ok, _short_link} = ShortLinks.create_short_link(params_for(:short_link))
@@ -50,6 +69,13 @@ defmodule GetShorty.ShortLinksTest do
       params = %{params | token: token}
       assert {:error, changeset} = ShortLinks.create_short_link(params)
       assert %{token: ["has already been taken"]} = errors_on(changeset)
+    end
+
+    test "fails with invalid long link" do
+      params = params_for(:short_link)
+      params = %{params | long_link: "missing-https.com"}
+      assert {:error, changeset} = ShortLinks.create_short_link(params)
+      assert %{long_link: ["is not a valid url"]} = errors_on(changeset)
     end
   end
 
