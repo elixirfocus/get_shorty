@@ -1,24 +1,15 @@
 # GetShorty
 
-## Helpful commands
+Get Shorty is an open source link shortener built with Elixir and the Phoenix Framework. It is a member of the Phoenix by Example collection and is built to be a source to frame educational discussions.
 
-* `mix test.watch --stale` to keep a console constantly running the tests against module changes.
+Built using Elixir 1.11.1 and Phoenix 1.5.6.
 
-To start your Phoenix server:
+## Preview
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+Create a new short link:
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+![Create a new short link.](docs/new.png)
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+New short link details:
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+![New short link details.](docs/details.png)
