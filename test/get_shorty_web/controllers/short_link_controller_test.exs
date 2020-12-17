@@ -84,10 +84,10 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
         |> html_response(200)
         |> Floki.parse_document()
 
-      assert Floki.find(html, ".test_short_link_url") |> Floki.text() ==
+      assert Floki.find(html, ".floki-short-link-url") |> Floki.text() ==
                "http://localhost:4002/#{token}"
 
-      assert Floki.find(html, ".test_long_link") |> Floki.text() ==
+      assert Floki.find(html, ".floki-test-long-link") |> Floki.text() ==
                "It will redirect to: #{long_link}"
     end
 

@@ -2,8 +2,8 @@
 
 <p>Here is your short link:</p>
 
-<p class="test_short_link_url"><%= link @short_link_url, to: @short_link_url %></p>
+<p class="floki-short-link-url"><%= link @short_link_url, to: @short_link_url %></p>
 
-<p class="test_long_link">It will redirect to: <%= link @short_link.long_link, to: @short_link.long_link %></p>
+<p class="floki-test-long-link">It will redirect to: <%= link @short_link.long_link, to: @short_link.long_link %></p>
 
 <span><%= link "New Short Link", to: Routes.short_link_path(@conn, :new) %></span>
