@@ -30,6 +30,7 @@ defmodule GetShorty.ShortLinks do
   @doc """
   Attempts to find and return a single `ShortLink` based on a passed in token value.
   """
+  # FIXME: Seems strange that we return `{:error, :not_found}` when `Repo.get_by` would return nil.
   def get_short_link_by_token(token) do
     case Repo.get_by(ShortLink, token: token) do
       nil -> {:error, :not_found}
