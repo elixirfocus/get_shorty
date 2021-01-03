@@ -61,7 +61,10 @@ defmodule GetShorty.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
 
       # For website parsing in tests
-      {:floki, "~> 0.29.0", only: [:test]}
+      {:floki, "~> 0.29.0", only: [:test]},
+
+      # For code consistency
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 
