@@ -42,7 +42,7 @@ defmodule GetShorty.ShortLinks do
   Returns a random token that is available for a new `ShortLink`.
   """
   @spec get_available_random_token() :: String.t()
-  def get_available_random_token() do
+  def get_available_random_token do
     token = build_random_token()
 
     case get_short_link_by_token(token) do
