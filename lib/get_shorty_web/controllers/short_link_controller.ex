@@ -58,6 +58,6 @@ defmodule GetShortyWeb.ShortLinkController do
   end
 
   defp build_short_link_url(conn, %ShortLink{} = short_link) do
-    GetShortyWeb.Router.Helpers.url(conn) <> "/#{short_link.token}"
+    Routes.url(conn) <> "/#{short_link.token}"
   end
 end

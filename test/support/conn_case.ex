@@ -16,6 +16,7 @@ defmodule GetShortyWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Ecto.Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -33,10 +34,10 @@ defmodule GetShortyWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(GetShorty.Repo)
+    :ok = Sandbox.checkout(GetShorty.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(GetShorty.Repo, {:shared, self()})
+      Sandbox.mode(GetShorty.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
