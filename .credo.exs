@@ -88,7 +88,7 @@
         # set this value to 0 (zero).
         #
         {Credo.Check.Design.TagTODO, [exit_status: 2]},
-        {Credo.Check.Design.TagFIXME, []},
+        {Credo.Check.Design.TagFIXME, false},
 
         #
         ## Readability Checks
