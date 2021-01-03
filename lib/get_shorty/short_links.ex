@@ -53,7 +53,10 @@ defmodule GetShorty.ShortLinks do
 
   @spec build_random_token(integer() | nil) :: String.t()
   defp build_random_token(length \\ 6) do
-    :crypto.strong_rand_bytes(length) |> Base.url_encode64() |> binary_part(0, length)
+    length
+    |> :crypto.strong_rand_bytes()
+    |> Base.url_encode64()
+    |> binary_part(0, length)
   end
 
   @doc """

@@ -12,7 +12,7 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
         |> Floki.parse_document()
 
       assert [{"input", _, _}] = Floki.find(html, "#short_link_long_link")
-      assert Floki.find(html, "button[type=submit]") |> Floki.text() == "Create Short Link"
+      assert html |> Floki.find("button[type=submit]") |> Floki.text() == "Create Short Link"
     end
   end
 
@@ -33,10 +33,10 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
         |> html_response(200)
         |> Floki.parse_document()
 
-      assert Floki.find(html, ".alert") |> Floki.text() ==
+      assert html |> Floki.find(".alert") |> Floki.text() ==
                "Could not create short link. See errors below."
 
-      assert Floki.find(html, "span[phx-feedback-for=short_link_long_link]") |> Floki.text() ==
+      assert html |> Floki.find("span[phx-feedback-for=short_link_long_link]") |> Floki.text() ==
                "can't be blank"
     end
 
@@ -49,10 +49,10 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
         |> html_response(200)
         |> Floki.parse_document()
 
-      assert Floki.find(html, ".alert") |> Floki.text() ==
+      assert html |> Floki.find(".alert") |> Floki.text() ==
                "Could not create short link. See errors below."
 
-      assert Floki.find(html, "span[phx-feedback-for=short_link_long_link]") |> Floki.text() ==
+      assert html |> Floki.find("span[phx-feedback-for=short_link_long_link]") |> Floki.text() ==
                "is not a valid url"
     end
   end
@@ -84,10 +84,10 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
         |> html_response(200)
         |> Floki.parse_document()
 
-      assert Floki.find(html, ".floki-short-link-url") |> Floki.text() ==
+      assert html |> Floki.find(".floki-short-link-url") |> Floki.text() ==
                "http://localhost:4002/#{token}"
 
-      assert Floki.find(html, ".floki-test-long-link") |> Floki.text() ==
+      assert html |> Floki.find(".floki-test-long-link") |> Floki.text() ==
                "It will redirect to: #{long_link}"
     end
 
