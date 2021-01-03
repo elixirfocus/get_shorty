@@ -1,4 +1,9 @@
 defmodule GetShortyWeb.Telemetry do
+  @moduledoc """
+  Generated as part of a new Phoenix application, this module organizes the
+  telemetry metrics that will be reported by the application.
+  """
+
   use Supervisor
   import Telemetry.Metrics
 

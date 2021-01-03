@@ -1,4 +1,8 @@
 defmodule GetShorty.ShortLinks.ShortLink do
+  @moduledoc """
+  Define the relationship between a URL-safe token and a long link URL.
+  """
+
   use Ecto.Schema
 
   @type t :: %__MODULE__{
