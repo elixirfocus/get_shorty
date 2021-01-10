@@ -9,3 +9,8 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias GetShorty.Repo
+alias GetShorty.ShortLinks.ShortLink
+
+Repo.insert!(%ShortLink{long_link: "https://mikezornek.com", token: "abc123"})
