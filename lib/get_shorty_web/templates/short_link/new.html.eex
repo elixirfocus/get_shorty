@@ -1,5 +1,7 @@
 <p><strong>Get Shorty</strong> is an open source link shortener, part of the <a href="https://github.com/phoenix-by-example/">Phoenix by Example collection</a>.</p>
 
+<h2><%= link "Download the report!", to: Routes.static_path(@conn, "/reports/2020-report.pdf") %></h2>
+
 <%= form_for @changeset, Routes.short_link_path(@conn, :create), fn f -> %>
 
   <%= if @changeset.action do %>
