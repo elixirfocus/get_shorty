@@ -15,7 +15,6 @@ defmodule GetShorty.DataCase do
   """
 
   use ExUnit.CaseTemplate
-  alias Ecto.Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -30,12 +29,8 @@ defmodule GetShorty.DataCase do
   end
 
   setup tags do
-    :ok = Sandbox.checkout(GetShorty.Repo)
-
-    unless tags[:async] do
-      Sandbox.mode(GetShorty.Repo, {:shared, self()})
-    end
-
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(GetShorty.Repo, shared: not tags[:async])
+    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     :ok
   end
 

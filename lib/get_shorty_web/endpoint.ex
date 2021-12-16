@@ -7,12 +7,8 @@ defmodule GetShortyWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_get_shorty_key",
-    signing_salt: "I1I8S6bL"
+    signing_salt: "RappwCx2"
   ]
-
-  socket "/socket", GetShortyWeb.UserSocket,
-    websocket: true,
-    longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
@@ -24,7 +20,7 @@ defmodule GetShortyWeb.Endpoint do
     at: "/",
     from: :get_shorty,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

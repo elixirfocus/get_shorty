@@ -36,7 +36,9 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
       assert html |> Floki.find(".alert") |> Floki.text() ==
                "Could not create short link. See errors below."
 
-      assert html |> Floki.find("span[phx-feedback-for=short_link_long_link]") |> Floki.text() ==
+      assert html
+             |> Floki.find("span[phx-feedback-for]")
+             |> Floki.text() ==
                "can't be blank"
     end
 
@@ -52,7 +54,9 @@ defmodule GetShortyWeb.ShortLinkControllerTest do
       assert html |> Floki.find(".alert") |> Floki.text() ==
                "Could not create short link. See errors below."
 
-      assert html |> Floki.find("span[phx-feedback-for=short_link_long_link]") |> Floki.text() ==
+      assert html
+             |> Floki.find("span[phx-feedback-for]")
+             |> Floki.text() ==
                "is not a valid url"
     end
   end

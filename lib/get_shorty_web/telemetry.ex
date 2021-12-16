@@ -1,9 +1,4 @@
 defmodule GetShortyWeb.Telemetry do
-  @moduledoc """
-  Generated as part of a new Phoenix application, this module organizes the
-  telemetry metrics that will be reported by the application.
-  """
-
   use Supervisor
   import Telemetry.Metrics
 
@@ -36,11 +31,27 @@ defmodule GetShortyWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("get_shorty.repo.query.total_time", unit: {:native, :millisecond}),
-      summary("get_shorty.repo.query.decode_time", unit: {:native, :millisecond}),
-      summary("get_shorty.repo.query.query_time", unit: {:native, :millisecond}),
-      summary("get_shorty.repo.query.queue_time", unit: {:native, :millisecond}),
-      summary("get_shorty.repo.query.idle_time", unit: {:native, :millisecond}),
+      summary("get_shorty.repo.query.total_time",
+        unit: {:native, :millisecond},
+        description: "The sum of the other measurements"
+      ),
+      summary("get_shorty.repo.query.decode_time",
+        unit: {:native, :millisecond},
+        description: "The time spent decoding the data received from the database"
+      ),
+      summary("get_shorty.repo.query.query_time",
+        unit: {:native, :millisecond},
+        description: "The time spent executing the query"
+      ),
+      summary("get_shorty.repo.query.queue_time",
+        unit: {:native, :millisecond},
+        description: "The time spent waiting for a database connection"
+      ),
+      summary("get_shorty.repo.query.idle_time",
+        unit: {:native, :millisecond},
+        description:
+          "The time the connection spent waiting before being checked out for the query"
+      ),
 
       # VM Metrics
       summary("vm.memory.total", unit: {:byte, :kilobyte}),
